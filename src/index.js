@@ -1,37 +1,30 @@
 /**
- * テンプレート文字列
+ * 分割代入
  */
-const name = "takumi";
-const age = 24;
-// 「私の名前はtakumiです。年齢は24歳です。」
+const myProfile = {
+  name: "takumi",
+  age: 24
+};
 
-// 従来の方法
-const message1 = "私の名前は" + name + "です。年齢は" + age + "歳です。";
+const message1 = `名前は${myProfile.name}です。年齢は${myProfile.age}歳です。`;
 console.log(message1);
 
-// テンプレート文字列を用いた方法
-const message2 = `私の名前は${name}です。年齢は${age}歳です。`;
+const { name, age } = myProfile;
+const message2 = `名前は${name}です。年齢は${age}歳です。`;
 console.log(message2);
 
+// const myProfile = ["takumi", 24];
+
+// const message3 = `名前は${myProfile[0]}です。年齢は${myProfile[1]}歳です。`;
+// console.log(message3);
+
+// const [name, age] = myProfile;
+// const message4 = `名前は${name}です。年齢は${age}歳です。`;
+// console.log(message4);
+
 /**
- * アロー関数
+ * デフォルト値、引数など
  */
-// 従来の関数
-// function func1(str) {
-//   return str;
-// }
-const func1 = function (str) {
-  return str;
-};
-console.log(func1("func1です"));
-
-// アロー関数
-const func2 = (str) => {
-  return str;
-};
-console.log(func2("func2です"));
-
-const func3 = (num1, num2) => {
-  return num1 + num2;
-};
-console.log(func3(10, 20));
+const sayHello = (name = "ゲスト") => console.log(`こんにちは!${name}さん!`);
+sayHello("takumi");
+sayHello();
