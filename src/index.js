@@ -1,44 +1,41 @@
 import "./styles.css";
-/**
- * 三項演算子
- */
-// ある条件 ? 条件がtrueの時 : 条件がfalseの時
-const val1 = 1 > 0 ? "trueです" : "falseです";
-console.log(val1);
 
-const num1 = 1300;
-console.log(num1.toLocaleString());
+const onClickAdd = () => {
+  // テキストボックスの値を取得し、初期化する
+  const inputText = document.getElementById("add-text").value;
+  document.getElementById("add-text").value = "";
 
-const num2 = "1300";
-const formattedNum =
-  typeof num2 === "number" ? num2.toLocaleString() : "数値を入力してください";
-console.log(formattedNum);
+  // div生成
+  const div = document.createElement("div");
+  div.className = "list-row";
 
-const checkSum = (num1, num2) => {
-  return num1 + num2 > 100 ? "100を超えています" : "許容範囲内です";
+  // liタグ生成
+  const li = document.createElement("li");
+  li.innerText = inputText;
+
+  // button(完了)タグ生成
+  const completeButton = document.createElement("button");
+  completeButton.innerText = "完了";
+  completeButton.addEventListener("click", () => {
+    alert("完了");
+  });
+
+  // button(完了)タグ生成
+  const deleteButton = document.createElement("button");
+  deleteButton.innerText = "削除";
+  deleteButton.addEventListener("click", () => {
+    alert("削除");
+  });
+
+  // divタグの子要素に各要素を設定
+  div.appendChild(li);
+  div.appendChild(completeButton);
+  div.appendChild(deleteButton);
+
+  // 未完了のリストに追加
+  document.getElementById("incomplete-list").appendChild(div);
 };
-console.log(checkSum(50, 40));
-console.log(checkSum(50, 60));
 
-/**
- * 論理演算子の本当の意味を知ろう && ||
- */
-const flag1 = true;
-const flag2 = false;
-
-if (flag1 || flag2) {
-  console.log("1か2はtrueになります");
-}
-if (flag1 && flag2) {
-  console.log("1か2はtrueになります");
-}
-
-// || は左側がfalseなら右側を返す
-const num3 = null;
-const fee = num3 || "金額未設定です";
-console.log(fee);
-
-// && は左側がtrueなら右側が返す
-const num4 = 100;
-const fee2 = num4 && "何か設定されました";
-console.log(fee2);
+document
+  .getElementById("add-button")
+  .addEventListener("click", () => onClickAdd());
