@@ -1,3 +1,4 @@
+import "./styles.css";
 /**
  * 三項演算子
  */
